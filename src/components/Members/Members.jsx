@@ -23,14 +23,15 @@ const Members = () => {
 
     const handleFilter = () => {
         if (search !== "") {
+            const searchText = search.toLocaleLowerCase();
             const filterName = advisors.filter((item) => {
-                return item.displayName.includes(search)
+                return item.displayName.toLocaleLowerCase().includes(searchText)
             });
             const filterCategories = advisors.filter((item) => {
                 const categories = item.categoriesCollection.items;
                 // console.log({categories});
                 const matches = categories.filter((category) => {
-                    return category.displayName.includes(search);
+                    return category.displayName.toLocaleLowerCase().includes(searchText);
                 });
 
                 // console.log({matches});
